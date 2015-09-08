@@ -1,0 +1,184 @@
+@import "compass/reset";
+@import "compass/css3";
+$structureHeight: 150px;
+$borderColor: #444;
+*{
+	box-sizing:border-box;
+}
+body{
+	width: 100%;
+	overflow: hidden;
+	height: 100vh;
+	font-family: 'Helvetica';
+}
+.result{
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: $structureHeight;
+	width: 50%;
+	border-right: 1px solid $borderColor;
+	border-bottom: 1px solid $borderColor;
+	overflow: auto;
+	padding: 10px;
+	h2{
+		font-size: 1.2em;
+		border-bottom: 1px solid #ddd;
+		padding: 1em;
+		text-align: center;
+		margin-bottom: 2em;
+	}
+}
+.controls{
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 50%;
+}
+.templateBlock{
+  position: relative;
+  display: table-cell;
+  border: 2px solid $borderColor;
+  width: 30px;
+	&.full{
+		background: salmon;
+		.templateBlockWrapper > div{
+			line-height: 1.4;
+		}
+	}
+	&.empty{
+		border: 3px dashed papayawhip;
+		text-align: center;
+		line-height: 100%;
+		vertical-align: middle;
+		font-size: 3.5em;
+		color: papayawhip;
+		.templateBlockWrapper > div{
+			line-height: 0.4;
+		}
+	}
+}
+
+.templateBlockWrapper{
+	display: table;
+  width: 84%;
+  border-spacing: 10px;
+  /* margin: 0 auto; */
+  height: 40%;
+  position: absolute;
+  top: 15%;
+  left: 5%;
+  > div{
+  	display: table-row;
+  	line-height: 0.4;
+  }
+}
+.upper{
+	position: absolute;
+	top:0;
+	bottom: $structureHeight;
+	border-bottom: 1px solid $borderColor;
+	width: 100%;
+	left: 0;
+	overflow: auto;
+}
+
+.elementAdd{
+	text-align: center;
+	list-style: none;
+	li{
+		font-size: 1.1em;
+		line-height: 1.3;
+		border-bottom: 1px solid #ddd;
+	}
+}
+
+.structure{
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: $structureHeight;
+	position: absolute;
+	display: table;
+	border-spacing: 10px;
+	.documentContainer{
+		display: table-row;
+	}
+}
+
+.elementAdd{
+	position: absolute;
+	top: 10px;
+	right: -10px;
+	bottom: 10px;
+	width: 95%;
+	border: 1px solid $borderColor;
+	border-radius:5px;
+	background: white;
+	z-index: 40;
+
+	@include transition(all 1s ease);
+	@include transform(translateX(100%));
+	&.active{
+		@include transform(translateX(0));
+	}
+}
+
+.fields{
+	padding: 40px 5px;
+	overflow: auto;
+	h1{
+		font-size: 3em;
+		margin-top: 200px;
+	}
+}
+
+.inputBlock{
+	min-height: 100px;
+	border-bottom: 1px solid #ddd;
+	margin: 0 0 20px;
+	h4{
+		text-align: left;
+		font-size: 1.3em;
+	}
+
+	input[type="text"]{
+		width: 80%;
+	}
+	input[type="radio"]{
+		margin-right: 10px;
+	}
+	textarea{
+		width: 333px;
+  	height: 80px;
+	}
+}
+
+.deleteElement{
+		display: block;
+  margin: 0 auto;
+  width: 70%;
+  font-size: 1.1em;
+  border: none;
+  background: #f11;
+  border-radius: 4px;
+}
+
+.addElement{
+	position: absolute;
+  right: 0;
+  top: 40px;
+  width: 90px;
+  height: 90px;
+  text-align: center;
+  font-size: 3em;
+  padding: calc(45px - 0.5em);
+  z-index: 30;
+	background: rgba(100,100,100,0.7);
+	border-radius: 3px;
+}
+
+.preview{
+	min-height: 98vh;
+}

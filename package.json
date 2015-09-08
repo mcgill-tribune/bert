@@ -1,0 +1,27 @@
+{
+  "name": "bert2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "es6-promise": "^2.3.0",
+    "react": "^0.13.3"
+  },
+  "devDependencies": {
+    "browserify": "^11.0.1",
+    "reactify": "^1.1.1",
+    "watchify": "^3.3.1"
+  },
+  "scripts": {
+    "start": "watchify -o src/js/bundle.js -v -d src/js/app.js",
+    "build": "browserify . -t [envify --NODE_ENV production] | uglifyjs -cm > js/bundle.min.js",
+    "test": "jest"
+  },
+  "browserify": {
+    "transform": [
+      "reactify"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}
