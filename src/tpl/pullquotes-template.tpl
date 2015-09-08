@@ -36,4 +36,4 @@
 }
 
 </style>
-<div class="pull">{{Pullquote default="Defaults are cool too!" type="textarea"}}</div>
+<div class="pull">{{Pullquote default="Defaults are cool too!" type="text"}}</div>

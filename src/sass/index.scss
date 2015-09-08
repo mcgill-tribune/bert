@@ -1,5 +1,6 @@
 @import "compass/reset";
 @import "compass/css3";
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,700);
 $structureHeight: 150px;
 $borderColor: #444;
 *{
@@ -181,4 +182,28 @@ body{
 
 .preview{
 	min-height: 98vh;
+}
+
+$stars: 5;
+@while $stars > 0{
+	$round: $stars % 1 == 0;
+	.nstars#{if($round, $stars, #{$stars - 0.5}_5)} {
+		@if not($round) {
+			:nth-child(#{$stars + $stars % 1}){
+					background-image: url('http://mcgilltribune.com/wp-content/uploads/2014/10/star-half.png');
+					width: #{$stars};
+					height: 20px;
+					display: inline-block;
+					background-size: contain;
+			}
+		}
+		$stars2: ($stars + $stars % 1) + 1;
+		@while $stars2 <= 5{
+			:nth-child(#{$stars2}){
+				display: none;
+			}
+			$stars2: $stars2 + 1;
+		}
+	}
+	$stars: $stars - 0.5;
 }

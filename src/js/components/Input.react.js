@@ -125,6 +125,7 @@ var Input = React.createClass({
 		this.props.handleChange();
 	},*/
 	_handleChange: function(value){
+		value = (this.props.type=="textarea" ? 	'<p>' + value.replace('\n', '</p><p>') + '</p>' : value);
 		BertActionCreators.updateElement(this.props.el, this.props.field, value);
 	}
 });
