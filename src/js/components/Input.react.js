@@ -125,7 +125,8 @@ var Input = React.createClass({
 		this.props.handleChange();
 	},*/
 	_handleChange: function(value){
-		value = (this.props.type=="textarea" ? 	'<p>' + value.replace('\n', '</p><p>') + '</p>' : value);
+		value = (this.props.type=="textarea" ? 	'<p>' + value.replace(/\n/g, '</p><p>') + '</p>' : value);
+		console.log( 'Filtered input is ' , this.props.type , JSON.stringify(value));
 		BertActionCreators.updateElement(this.props.el, this.props.field, value);
 	}
 });

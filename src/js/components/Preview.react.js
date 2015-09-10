@@ -3,6 +3,14 @@ var React = require('react');
 var Preview = React.createClass({
 	render: function(){
 		var text = this._renderFromTemplate();
+		var code = text.replace(/\n/g, '')
+		var style = new Set(code.match(/<style>.*?<\/style>/g));
+		code = code.replace(/<style>.*?<\/style>/g, '');
+		var styletext = '';
+		style.forEach(function(e){
+			styletext += e;
+		});
+		code = styletext + code;
 		return (
 			<div className="result">
 			<h2>Preview</h2>
@@ -10,7 +18,7 @@ var Preview = React.createClass({
 			</div>
 			<div className="code">
 				<h2>Copy and Paste this code</h2>
-				{text}
+				{code}
 			</div>
 			</div>
 		);

@@ -21,7 +21,7 @@
 		overflow: visible;
 	}
 </style>
-	<div class="listitem" ng-repeat="article in articles track by $index">
+	<div class="listitem">
 		<h3 class="listheader">{{Item_Title type="text"}}</h3>
 		<div class="listimage-wrap"><<&FeaturedBlock accepts="block">></div>
 		<div class="listtext">{{Item_Content type="textarea"}}</div>
