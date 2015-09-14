@@ -1,6 +1,10 @@
 var React = require('react');
+var CopyToClipboard = require('react-copy-to-clipboard');
 
 var Preview = React.createClass({
+	getInitialState: function(){
+		return {copied: false};
+	},
 	render: function(){
 		var text = this._renderFromTemplate();
 		var code = text.replace(/\n/g, '')
@@ -10,9 +14,14 @@ var Preview = React.createClass({
 		style.forEach(function(e){
 			styletext += e;
 		});
-		code = styletext + code;
+		code = '<style>' + styletext.replace(/<\/?style>/, '') + '</style>'+ code;
 		return (
 			<div className="result">
+			<div className="copy">
+				<CopyToClipboard onCopy={this._handleCopy} text={code}>
+					{this.state.copied ? 'Copied!' : 'Copy code to Clipboard'}
+				</CopyToClipboard>
+			</div>
 			<h2>Preview</h2>
 			<div className="preview" dangerouslySetInnerHTML={{__html: text}}>
 			</div>
@@ -22,6 +31,10 @@ var Preview = React.createClass({
 			</div>
 			</div>
 		);
+	},
+
+	_handleCopy: function(){
+		this.setState({copied:true});
 	},
 
 	_renderFromTemplate: function(){
