@@ -14,7 +14,7 @@ var Preview = React.createClass({
 		style.forEach(function(e){
 			styletext += e;
 		});
-		code = '<style>' + styletext.replace(/<\/?style>/, '') + '</style>'+ code;
+		code = '<style>' + styletext.replace(/<\/?style>/g, '') + '</style>'+ code;
 		return (
 			<div className="result">
 			<div className="copy">
