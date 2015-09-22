@@ -17,14 +17,14 @@ var TemplateBlock = React.createClass({
 				}
 				else{
 					result.push(
-						<TemplateBlock isFull={true} handleAdding={self.props.handleAdding} pos={i}onClick={handler} el={self.props.el.children[elem]}/>
+						<TemplateBlock isFull={true} handleAdding={self.props.handleAdding} pos={i} onClick={handler} el={self.props.el.children[elem]}/>
 					);
 				}
 			});
 		}
 
 		return(
-			<div className={"templateBlock " + status} onClick={handler} key={this.props.pos}>
+			<div className={"templateBlock " + status} ref="tplBlk" draggable={this.props.isFull ? true : null} onDrag={this._handleDragStart} onDragEnd={this._handleDragEnd} onDragLeave={this.props.isFull ? null : self._onDragLeave} onDragOver={this.props.isFull ? null : self._onDragOver} onDrop={this.props.isFull ? null : this._onDrop} onClick={handler} key={this.props.pos}>
 				{this.props.el ? this.props.el.template : ''}
 				<div className="templateBlockWrapper">
 					<div>
@@ -38,7 +38,7 @@ var TemplateBlock = React.createClass({
 		this.props.el.childMap.forEach(function(elem, i){
 			if(!self.props.el.children[elem]){
 				result.push(
-					<div key={i} className="templateBlock empty" onClick={self._clickEmpty.bind(self, i)}></div>
+					<div key={i} className="templateBlock empty"  onClick={self._clickEmpty.bind(self, i)}></div>
 				);
 				return;
 			}
@@ -61,9 +61,33 @@ var TemplateBlock = React.createClass({
 			BertActionCreators.focusOn(this.props.el);
 		}
 	},
+	_handleDragStart: function(e){
+		this.refs.tplBlk.getDOMNode().style.opacity = 0
+		this.props.handleAdding(this.props.el, this.props.pos, true, true);
+	},
+	_handleDragEnd:function(e){
+		e.preventDefault();
+		this.refs.tplBlk.getDOMNode().style.opacity = 1
+		list = this.refs.tplBlk.getDOMNode().children && (this.refs.tplBlk.getDOMNode().children.length > 1 && this.refs.tplBlk.getDOMNode().children[1].children[0].children)
+		for(var i = 0; i < list.length; i++){
+			this.refs.tplBlk.getDOMNode().children
+		}
+	},
 	_clickEmpty:function(e){
 		e.stopPropagation();
 		this.props.handleAdding(this.props.parent, this.props.pos, false);
+	},
+	_onDragOver:function(e){
+		e.preventDefault();
+		this.refs.tplBlk.getDOMNode().classList.add('hover')
+	},
+	_onDrop:function(e){
+		e.preventDefault();
+		this.props.handleAdding(this.props.parent, this.props.pos, false, true);
+	},
+	_onDragLeave:function(e){
+		e.preventDefault();
+		this.refs.tplBlk.getDOMNode().classList.remove('hover')
 	}
 });
 

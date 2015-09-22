@@ -12,6 +12,7 @@ body{
 	height: 100vh;
 	font-family: 'Helvetica';
 }
+
 .result{
 	position: absolute;
 	left: 0;
@@ -55,6 +56,9 @@ body{
 		vertical-align: middle;
 		font-size: 3.5em;
 		color: papayawhip;
+		&.hover{
+			border-color: black;
+		}
 		.templateBlockWrapper > div{
 			line-height: 0.4;
 		}

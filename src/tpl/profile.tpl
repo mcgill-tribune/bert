@@ -119,62 +119,62 @@
 	</style>
 	<div style="max-width:800px; margin:0 auto">
 		<ul class="profiles">
-			<li class="profileImg" data-target='{{name1 type="text"}}'>
+			<li class="profileImg" data-target='{{id1 type="text"}}'>
 				<div class="profileImgContent">
 					<img src='{{img1 type="text"}}' alt="">
-					<h3>This Guy</h3>
+					<h3>{{name1 type="text"}}</h3>
 				</div>
 			</li>
-			<li class="profileImg" data-target='{{name2 type="text"}}'>
+			<li class="profileImg" data-target='{{id2 type="text"}}'>
 				<div class="profileImgContent">
 				<img src='{{img2 type="text"}}' alt="">
-				<h3>That guy</h3>
+				<h3>{{name2 type="text"}}</h3>
 			</div>
 			</li>
-			<li class="profileImg" data-target='{{name3 type="text"}}'>
+			<li class="profileImg" data-target='{{id3 type="text"}}'>
 				<div class="profileImgContent">
 				<img src='{{img3 type="text"}}' alt="">
-				<h3>The other guy</h3>
+				<h3>{{name3 type="text"}}</h3>
 			</div>
 			</li>
-			<li class="profileImg" data-target='{{name4 type="text"}}'>
+			<li class="profileImg" data-target='{{id4 type="text"}}'>
 				<div class="profileImgContent">
 				<img src='{{img4 type="text"}}' alt="">
-				<h3>The Next guy</h3>
+				<h3>{{name4 type="text"}}</h3>
 			</div>
 			</li>
-			<li class="profileImg" data-target='{{name5 type="text"}}'>
+			<li class="profileImg" data-target='{{id5 type="text"}}'>
 				<div class="profileImgContent">
 				<img src='{{img5 type="text"}}' alt="">
-				<h3>This guy</h3>
+				<h3>{{name5 type="text"}}</h3>
 			</div>
 			</li>
-			<li class="profileImg" data-target='{{name6 type="text"}}'>
+			<li class="profileImg" data-target='{{id6 type="text"}}'>
 				<div class="profileImgContent">
 				<img src='{{img6 type="text"}}' alt="">
-				<h3>That guy</h3>
+				<h3>{{name6 type="text"}}</h3>
 			</div>
 			</li>
 		</ul>
 			<div class="content">
 			</div>
 			<button class="readMore">Read about the other execs</button>
-			<script type="text/html" id="{{name1 type="text"}}">
+			<script type="text/html" id="{{id1 type="text"}}">
 				{{content1 type="textarea"}}
 			</script>
-			<script type="text/html" id="{{name2 type="text"}}">
+			<script type="text/html" id="{{id2 type="text"}}">
 				{{content2 type="textarea"}}
 			</script>
-			<script type="text/html" id="{{name3 type="text"}}">
+			<script type="text/html" id="{{id3 type="text"}}">
 				{{content3 type="textarea"}}
 			</script>
-			<script type="text/html" id="{{name4 type="text"}}">
+			<script type="text/html" id="{{id4 type="text"}}">
 				{{content4 type="textarea"}}
 			</script>
-			<script type="text/html" id="{{name5 type="text"}}">
+			<script type="text/html" id="{{id5 type="text"}}">
 				{{content5 type="textarea"}}
 			</script>
-			<script type="text/html" id="{{name6 type="text"}}">
+			<script type="text/html" id="{{id6 type="text"}}">
 				{{content6 type="textarea"}}
 			</script>
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>

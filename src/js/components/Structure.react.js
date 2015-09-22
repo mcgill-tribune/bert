@@ -27,17 +27,28 @@ var Structure = React.createClass({
 		BertActionCreators.focusOn(undefined);
 	},
 
-	_onClick: function(el, i, isFull){
-		if(isFull && !this.state.clickedEl){
+	_onClick: function(el, i, isFull, isDrag){
+		console.log(el, i, isFull, isDrag)
+		if(isDrag && isFull){
+			this.setState({draggingEl:{
+				element:el,
+				position:i
+			}});
+			console.log(this.state)
+		}
+		else if(isDrag){
+			BertActionCreators.addChild(this.state.draggingEl.element,el, i);
+		}
+		if(isFull && !this.state.clickedEl && !isDrag){
 			return false;
 		}
-		else if(!isFull){
+		else if(!isFull  && !isDrag){
 			this.state.clickedEl = {
 				element:el,
 				position:i
 			};
 		}
-		else{
+		else if (!isDrag){
 			BertActionCreators.addChild(el, this.state.clickedEl.element, this.state.clickedEl.position);
 			this.state.clickedEl = undefined;
 		}
